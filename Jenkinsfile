@@ -5,10 +5,10 @@ pipeline {
     }
 
     stages {
-        when {
-            expression { BRANCH ==~ /(main)/ }
-        }
         stage('Build and Run') {
+            when {
+                expression { BRANCH ==~ /(main)/ }
+            }
             steps {
                 echo 'Running docker-compose'
                 sh 'docker-compose up'
