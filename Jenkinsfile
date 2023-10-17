@@ -9,14 +9,18 @@ pipeline {
             expression { BRANCH ==~ /(main)/ }
         }
         stage('Build and Run') {
-            echo 'Running docker-compose'
-            sh 'docker-compose up'
+            steps {
+                echo 'Running docker-compose'
+                sh 'docker-compose up'
+            }
         }
         stage('DockerHub') {
-            echo 'Pushing image to DockerHub'
-            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                sh 'docker login -u wilknis -p ${dockerHubPwd}'
-                sh 'docker push wilknis/task-manager:v1'
+            steps {
+                echo 'Pushing image to DockerHub'
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                    sh 'docker login -u wilknis -p ${dockerHubPwd}'
+                    sh 'docker push wilknis/task-manager:v1'
+                }
             }
         }
     }
