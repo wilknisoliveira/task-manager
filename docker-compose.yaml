@@ -2,7 +2,7 @@ version: '2.22'
 
 services:
   task-manager:
-    image: wilknis/task-manager:v1
+    image: wilknis/task-manager:v2
     container_name: task-manager
     ports:
       - "8099:80"

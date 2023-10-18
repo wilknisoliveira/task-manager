@@ -19,7 +19,7 @@ pipeline {
                 echo 'Pushing image to DockerHub'
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh 'docker login -u wilknis -p ${dockerHubPwd}'
-                    sh 'docker push wilknis/task-manager:v1'
+                    sh 'docker push wilknis/task-manager:v2'
                 }
             }
         }
