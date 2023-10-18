@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 echo 'Running docker-compose'
-                sh 'docker compose up'
+                sh 'docker-compose up -d'
             }
         }
         stage('DockerHub') {
